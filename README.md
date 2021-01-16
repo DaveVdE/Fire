@@ -4,4 +4,4 @@ Pieced together from samples from Adafruit's ProtoMatter library and some code I
 
 Kept playing with it until I got the randomisation effect that I wanted. 
 
-
+![](images/fire.jpg)
