@@ -101,7 +101,7 @@ void loop() {
   for(int x = 0; x < FIRE_WIDTH; x++)
   {
     // Once in a great while, add in a white spot.
-    if (random(100000000) < y * y) { // Desperate attempt to bias then to the bottom.
+    if (random(100000000) < y * y * y * y / 1000) { // Desperate attempt to bias then to the bottom.
       fire[y][x] = 255;
     }
     else {
