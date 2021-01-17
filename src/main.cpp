@@ -100,12 +100,18 @@ void loop() {
   for(int y = 0; y < FIRE_HEIGHT - 1; y++)
   for(int x = 0; x < FIRE_WIDTH; x++)
   {
-    fire[y][x] =
-      ((fire[(y + 1) % FIRE_HEIGHT][(x - 1 + FIRE_WIDTH) % FIRE_WIDTH]
-      + fire[(y + 1) % FIRE_HEIGHT][(x) % FIRE_WIDTH]
-      + fire[(y + 1) % FIRE_HEIGHT][(x + 1) % FIRE_WIDTH]
-      + fire[(y + 2) % FIRE_HEIGHT][(x) % FIRE_WIDTH])
-      * 32) / 132;
+    // Once in a great while, add in a white spot.
+    if (random(100000000) < y * y) { // Desperate attempt to bias then to the bottom.
+      fire[y][x] = 255;
+    }
+    else {
+      fire[y][x] =
+        ((fire[(y + 1) % FIRE_HEIGHT][(x - 1 + FIRE_WIDTH) % FIRE_WIDTH]
+        + fire[(y + 1) % FIRE_HEIGHT][(x) % FIRE_WIDTH]
+        + fire[(y + 1) % FIRE_HEIGHT][(x + 1) % FIRE_WIDTH]
+        + fire[(y + 2) % FIRE_HEIGHT][(x) % FIRE_WIDTH])
+        * 32) / 132;
+    }
   }
 
   // Draw fire
