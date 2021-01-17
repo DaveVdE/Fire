@@ -5,3 +5,7 @@ Pieced together from samples from Adafruit's ProtoMatter library and some code I
 Kept playing with it until I got the randomisation effect that I wanted. 
 
 ![](images/fire.jpg)
+
+## How to install
+
+If you have the aforementioned kit, there's no need to build it yourself. Just download the UF2 firmware, start the bootloader and drop the firmware on the board.
