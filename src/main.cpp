@@ -68,11 +68,11 @@ void setup() {
 
   // Calculate palette
   for (int index = 0; index < 128; ++index) {
-    palette[index] = HSLto565(index / 6, 100, (index * 2.0) * 100 / 256);
+    palette[index] = HSLto565(120, 100, (index * index * index * 100) / (128 * 128 * 128));
   }
 
   for (int index = 128; index < 256; ++index) {
-    palette[index] = HSLto565(index / 6, (384 - index) * 100 / 256, 100);
+    palette[index] = HSLto565(120, (256 - index) * 100 / 256, 100);
   }
 
   // Clear buffer
@@ -92,8 +92,8 @@ void loop() {
 
   // Randomize bottom row
   for (int x = 0; x < FIRE_WIDTH; ++x) {
-    int n = random(4) + 1;
-    fire[FIRE_HEIGHT - 1][x] = n * n * n * n - 1;
+    int n = random(16) + 1;
+    fire[FIRE_HEIGHT - 1][x] = n * n + 128 - 1;
   }
 
   //do the fire calculations for every pixel, from top to bottom
@@ -110,7 +110,7 @@ void loop() {
         + fire[(y + 1) % FIRE_HEIGHT][(x) % FIRE_WIDTH]
         + fire[(y + 1) % FIRE_HEIGHT][(x + 1) % FIRE_WIDTH]
         + fire[(y + 2) % FIRE_HEIGHT][(x) % FIRE_WIDTH])
-        * 32) / 132;
+        * 64) / 261;
     }
   }
 
